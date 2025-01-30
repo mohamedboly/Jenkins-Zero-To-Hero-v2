@@ -8,7 +8,12 @@ pipeline {
   stages {
     stage('Checkout') {
       steps {
-        sh 'echo passed'
+        sh '''
+                echo "Vérification de la connexion à GitHub..."
+                git config --global http.verbose true
+                git config --global credential.helper cache
+                git ls-remote https://github.com/mohamedboly/Jenkins-Zero-To-Hero-v2
+            '''
         //git branch: 'main', url: 'https://github.com/mohamedboly/Jenkins-Zero-To-Hero-v2'
       }
     }
